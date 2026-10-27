@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f4ed">
+  <title>خطوة | قائمة المهام</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="خطوة، الصفحة الرئيسية">
+        <span class="brand-mark" aria-hidden="true">خ</span>
+        <span>خُطوة<span class="brand-dot">.</span></span>
+      </a>
+      <p class="date-label" id="todayLabel"></p>
+    </header>
+
+    <section class="intro" aria-labelledby="pageTitle">
+      <div>
+        <p class="eyebrow">مساحة يومك</p>
+        <h1 id="pageTitle">رتّب أفكارك، <span>خطوة بخطوة.</span></h1>
+        <p class="intro-copy">كل إنجاز كبير يبدأ بمهمة صغيرة.</p>
+      </div>
+      <div class="daily-art" aria-hidden="true">
+        <span class="sun"></span>
+        <span class="hill hill-back"></span>
+        <span class="hill hill-front"></span>
+        <span class="art-sparkle sparkle-one">✳</span>
+        <span class="art-sparkle sparkle-two">✦</span>
+      </div>
+    </section>
+
+    <section class="overview" aria-label="ملخص المهام">
+      <div class="overview-copy">
+        <span class="overview-icon" aria-hidden="true">✓</span>
+        <div>
+          <p class="overview-title">أنت تتقدم بشكل رائع</p>
+          <p class="overview-subtitle" id="progressText">ابدأ بإضافة أول مهمة لك</p>
+        </div>
+      </div>
+      <div class="remaining-count"><strong id="remainingCount">0</strong><span>مهام متبقية</span></div>
+    </section>
+
+    <section class="workspace" aria-label="إدارة قائمة المهام">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">قائمتك</p>
+          <h2>مهامي اليوم</h2>
+        </div>
+        <span class="task-total" id="taskTotal">0 مهمة</span>
+      </div>
+
+      <form class="task-form" id="taskForm">
+        <label class="field title-field">
+          <span>مهمة جديدة</span>
+          <input id="taskTitle" name="title" type="text" maxlength="100" placeholder="ما الذي ترغب بإنجازه؟" required autocomplete="off">
+        </label>
+        <div class="form-row">
+          <label class="field">
+            <span>الأولوية</span>
+            <select id="taskPriority" name="priority">
+              <option value="medium">متوسطة</option>
+              <option value="high">عالية</option>
+              <option value="low">منخفضة</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>الفئة</span>
+            <select id="taskCategory" name="category">
+              <option value="personal">شخصي</option>
+              <option value="work">عمل</option>
+              <option value="achievement">إنجازات</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>تاريخ الاستحقاق</span>
+            <input id="taskDueDate" name="dueDate" type="date">
+          </label>
+          <button class="add-button" type="submit"><span aria-hidden="true">＋</span><span id="submitLabel">أضف المهمة</span></button>
+          <button class="cancel-button" id="cancelEdit" type="button" hidden>إلغاء</button>
+        </div>
+      </form>
+
+      <div class="list-toolbar">
+        <div class="filters" role="group" aria-label="تصفية المهام">
+          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">الكل</button>
+          <button class="filter-button" type="button" data-filter="active" aria-pressed="false">قيد التنفيذ</button>
+          <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">المكتملة</button>
+        </div>
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <span class="visually-hidden">ابحث في المهام</span>
+          <input id="searchInput" type="search" placeholder="ابحث عن مهمة..." autocomplete="off">
+        </label>
+      </div>
+
+      <div class="task-list" id="taskList" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState">
+        <span class="empty-illustration" aria-hidden="true">☘</span>
+        <h3 id="emptyTitle">مساحتك جاهزة</h3>
+        <p id="emptyMessage">أضف أول مهمة، ودع يومك يبدأ بخطوة جميلة.</p>
+      </div>
+    </section>
+
+    <footer class="footer-note">أنجز ما تستطيع، والباقي يأتي بخطوة أخرى <span aria-hidden="true">✳</span></footer>
+    <p class="sync-note" id="syncStatus" role="status" aria-live="polite"></p>
+    <p class="visually-hidden" id="statusMessage" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>
